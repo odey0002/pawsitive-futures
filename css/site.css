@@ -1367,17 +1367,24 @@ textarea {
   object-fit: cover;
 }
 
+/* Shared accent tags: gold fill with the home-page success-story outline treatment. */
+.success-photo-label,
+.event-date,
+.involve-image-note {
+  box-sizing: border-box;
+  border: 2px solid var(--charcoal);
+  border-radius: 14px;
+  background: var(--gold);
+  color: var(--charcoal);
+  font-weight: 800;
+}
+
 .success-photo-label {
   position: absolute;
   right: -22px;
   bottom: 28px;
   max-width: 180px;
   padding: 15px 18px;
-  border: 2px solid var(--charcoal);
-  border-radius: 14px;
-  background: var(--gold);
-  color: var(--charcoal);
-  font-weight: 800;
   line-height: 1.25;
   z-index: 2;
 }
@@ -1524,8 +1531,6 @@ textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 14px;
-  background: var(--gold);
   line-height: 1;
 }
 
@@ -1801,9 +1806,6 @@ textarea {
   bottom: 24px;
   max-width: 235px;
   padding: 17px 20px;
-  border-radius: 14px;
-  background: var(--gold);
-  font-weight: 800;
   line-height: 1.3;
 }
 
