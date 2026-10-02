@@ -14,6 +14,29 @@ document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
+// Shared branded footer decoration, using the paw mark from logo-pawsitive-futures2.svg.
+const footerPawMarkup = `
+  <svg class="footer-paw-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="footer-brand-paw">
+        <path d="M80.88,82.49c12.8-1.5,25.1,5.1,31.8,15.9s5.9,21-4.5,26.8c-10.5,5.8-16.9-5.3-27.4-1.9s-12.9,6.9-21.2-.2c-16.2-13.8,4.7-38.5,21.4-40.5h0l-.1-.1Z" />
+        <path d="M67.28,49.99c9.9-2.2,15.4,18,7.2,20.6s-16.3-18.6-7.2-20.6Z" />
+        <path d="M99.78,50.09c6.8-1.4,8.2,5.8,7,11-1.2,5.2-7.2,12.9-12.4,8.6-5.6-4.7-1-18.3,5.4-19.6Z" />
+        <path d="M43.38,67.99c9.2-1.5,18.2,15.1,10,18.5-10.1,4.1-20.7-16.7-10-18.5Z" />
+        <path d="M124.78,67.99c13.4-1.9,4.1,22.2-7.4,18.6-8.4-2.6-.8-17.5,7.4-18.6Z" />
+      </g>
+    </defs>
+  </svg>
+  <svg class="footer-paw footer-paw-middle" aria-hidden="true" viewBox="35 42 100 90"><use href="#footer-brand-paw" /></svg>
+  <svg class="footer-paw footer-paw-right" aria-hidden="true" viewBox="35 42 100 90"><use href="#footer-brand-paw" /></svg>
+  <svg class="footer-paw footer-paw-lower" aria-hidden="true" viewBox="35 42 100 90"><use href="#footer-brand-paw" /></svg>
+  <svg class="footer-paw footer-paw-left" aria-hidden="true" viewBox="35 42 100 90"><use href="#footer-brand-paw" /></svg>
+`;
+
+document.querySelectorAll(".site-footer").forEach((footer) => {
+  footer.insertAdjacentHTML("afterbegin", footerPawMarkup);
+});
+
 // Pet search and filtering
 const filters = document.querySelectorAll("[data-filter]");
 const cards = document.querySelectorAll(".pet-card");

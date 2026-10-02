@@ -416,7 +416,7 @@ textarea {
 .feature-shell {
   position: relative;
   overflow: hidden;
-  padding: 95px 0;
+  padding: 95px 0 165px;
   background: var(--warm-taupe);
 }
 
@@ -470,8 +470,8 @@ textarea {
 
 .help-pet-peek {
   position: absolute;
-  right: -45px;
-  bottom: -18px;
+  right: -8px;
+  bottom: -116px;
   z-index: 2;
   width: 152px;
   height: 174px;
@@ -1660,8 +1660,8 @@ textarea {
     display: none;
   }
   .help-pet-peek {
-    right: -28px;
-    bottom: -30px;
+    right: -4px;
+    bottom: -102px;
     width: 130px;
     height: 150px;
   }
@@ -2268,6 +2268,23 @@ textarea {
 }
 
 @media (max-width: 530px) {
+  .footer-paw-right,
+  .footer-paw-left {
+    display: none;
+  }
+
+  .footer-paw-middle {
+    top: 34px;
+    left: 58%;
+    width: 22px;
+  }
+
+  .footer-paw-lower {
+    right: 20%;
+    bottom: 26px;
+    width: 18px;
+  }
+
   .footer-brand-block {
     padding-bottom: 38px;
   }
@@ -2350,7 +2367,7 @@ textarea {
 
 @media (min-width: 531px) and (max-width: 960px) {
   .feature-shell {
-    padding-bottom: 90px;
+    padding-bottom: 150px;
   }
 
   .foster-section {
