@@ -473,10 +473,10 @@ textarea {
   right: -8px;
   bottom: -116px;
   z-index: 2;
-  width: 152px;
-  height: 174px;
+  width: 140px;
+  height: 160px;
   background: var(--gold);
-  transform: rotate(5deg);
+  transform: none;
 }
 
 .help-pet-peek::before {
@@ -731,6 +731,29 @@ textarea {
   grid-template-columns: 0.74fr 1.26fr;
   gap: 70px;
   padding-bottom: 100px;
+}
+
+.contact-page-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 70px;
+  align-items: center;
+  max-width: 1060px;
+  text-align: left;
+}
+
+.contact-page-intro .lead {
+  margin: 22px 0 0;
+}
+
+.contact-pet-window {
+  justify-self: end;
+  width: 132px;
+  height: 151px;
+}
+
+.contact-pet-window img {
+  object-position: center;
 }
 
 .contact-details {
@@ -1200,7 +1223,7 @@ body.modal-open {
 
 .more-pets-callout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) 205px;
   gap: 42px;
   align-items: center;
   margin-top: 58px;
@@ -1220,8 +1243,53 @@ body.modal-open {
   margin: 0;
 }
 
-.more-pets-callout .button {
+.more-pets-copy .button {
+  margin-top: 24px;
   white-space: nowrap;
+}
+
+.more-pets-visual {
+  position: relative;
+  min-height: 192px;
+}
+
+.more-pets-window,
+.foster-pet-window,
+.contact-pet-window {
+  overflow: hidden;
+  border: 3px solid var(--accent-gold);
+  border-radius: 50% 50% 12px 12px;
+  background: var(--cambridge-blue);
+}
+
+.more-pets-window {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 132px;
+  height: 151px;
+}
+
+.more-pets-window img,
+.foster-pet-window img,
+.contact-pet-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.more-pets-window img {
+  object-position: center;
+}
+
+.more-pets-journey {
+  position: absolute;
+  bottom: 14px;
+  left: -86px;
+  width: 160px;
+  height: 85px;
+  overflow: visible;
+  color: var(--cambridge-blue);
 }
 
 /* Pet search and resource additions */
@@ -1859,8 +1927,8 @@ body.modal-open {
   .help-pet-peek {
     right: -4px;
     bottom: -102px;
-    width: 130px;
-    height: 150px;
+    width: 120px;
+    height: 137px;
   }
   .more-pets-callout {
     grid-template-columns: 1fr;
@@ -2155,6 +2223,7 @@ body.modal-open {
 }
 
 .process-list {
+  position: relative;
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--charcoal);
@@ -2170,7 +2239,20 @@ body.modal-open {
 }
 
 .process-list li > span {
+  position: relative;
+  z-index: 1;
   font-weight: 800;
+}
+
+.process-journey {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 70px;
+  height: 500px;
+  overflow: visible;
+  color: var(--ivory);
 }
 
 .process-list h3 {
@@ -2217,9 +2299,18 @@ body.modal-open {
 
 .foster-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 9%;
+  grid-template-columns: minmax(0, 0.8fr) 175px minmax(0, 1.05fr);
+  gap: 6%;
   align-items: start;
+}
+
+.foster-pet-window {
+  width: 152px;
+  height: 174px;
+}
+
+.foster-pet-window img {
+  object-position: center;
 }
 
 .foster-copy > p:not(.eyebrow) {
@@ -2347,6 +2438,11 @@ body.modal-open {
   .involve-events-card {
     grid-template-columns: 1fr;
   }
+  .foster-pet-window {
+    order: -1;
+    width: 140px;
+    height: 160px;
+  }
   .involve-hero {
     gap: 42px;
     padding: 45px 0 80px;
@@ -2419,7 +2515,11 @@ body.modal-open {
     padding: 24px 20px;
   }
   .process-list li {
-    grid-template-columns: 46px 1fr;
+    grid-template-columns: 70px 1fr;
+  }
+  .process-journey {
+    left: 0;
+    width: 70px;
   }
   .fit-card,
   .involve-events-card {
@@ -2679,6 +2779,38 @@ body.modal-open {
 @media (max-width: 530px) {
   .contact-grid {
     row-gap: 48px;
+  }
+
+  .contact-page-intro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .contact-page-intro .lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .contact-pet-window {
+    justify-self: center;
+  }
+
+  .more-pets-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .more-pets-visual {
+    min-height: 180px;
+  }
+
+  .more-pets-journey {
+    left: 6px;
+  }
+
+  .foster-pet-window {
+    width: 130px;
+    height: 149px;
   }
 }
 
