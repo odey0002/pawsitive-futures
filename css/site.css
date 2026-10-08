@@ -101,6 +101,26 @@ textarea {
   animation: logo-wave 2.8s ease-in-out infinite;
 }
 
+/* Reuse the charcoal paw mark over the pin so it remains legible on every surface. */
+.brand-logo-secondary {
+  display: block;
+  z-index: 3;
+}
+
+.footer-brand .brand-logo-secondary {
+  z-index: 3;
+}
+
+/* The taupe footer needs a deeper teal than the ivory header to preserve contrast. */
+.footer-brand .brand-logo-primary {
+  content: url("../images/logo-pawsitive-futures-footer.svg");
+}
+
+/* Swap to the purpose-built blue-pin/ivory-wordmark artwork on charcoal surfaces. */
+.brand--dark .brand-logo-primary {
+  content: url("../images/logo-pawsitive-futures-dark.svg");
+}
+
 @keyframes logo-wave {
   0%,
   100% {
@@ -468,10 +488,10 @@ textarea {
   font-size: 20px;
 }
 
-.help-pet-peek {
+.closing-pet-peek {
   position: absolute;
-  right: -8px;
-  bottom: -116px;
+  right: 48px;
+  bottom: -24px;
   z-index: 2;
   width: 140px;
   height: 160px;
@@ -479,11 +499,11 @@ textarea {
   transform: none;
 }
 
-.help-pet-peek::before {
+.closing-pet-peek::before {
   content: none;
 }
 
-.help-pet-peek img {
+.closing-pet-peek img {
   width: 100%;
   height: 100%;
   border-radius: 0;
@@ -492,6 +512,8 @@ textarea {
 }
 
 .closing {
+  position: relative;
+  overflow: hidden;
   padding: 120px 0;
   text-align: center;
 }
@@ -672,6 +694,7 @@ textarea {
   transition:
     transform 0.2s,
     box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .pet-card:hover {
@@ -731,6 +754,16 @@ textarea {
   grid-template-columns: 0.74fr 1.26fr;
   gap: 70px;
   padding-bottom: 100px;
+}
+
+.pet-card:focus-visible {
+  outline: 3px solid var(--cambridge-blue);
+  outline-offset: 4px;
+}
+
+.pet-card:hover .pet-button,
+.pet-card:focus-visible .pet-button {
+  text-decoration-color: var(--gold);
 }
 
 .contact-page-intro {
@@ -892,9 +925,13 @@ textarea {
 
 .pet-profile-image figcaption {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  padding: 8px 11px;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  box-sizing: border-box;
+  height: 38px;
+  align-items: center;
+  padding: 0 12px;
   border-radius: 99px;
   background: var(--ivory);
   color: var(--charcoal);
@@ -982,12 +1019,18 @@ textarea {
 }
 
 .pet-profile-card .modal-close {
-  z-index: 1;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: flex;
   width: 38px;
   height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 50%;
   background: var(--ivory);
-  line-height: 1;
+  font-size: 27px;
 }
 
 body.modal-open {
@@ -1037,10 +1080,13 @@ body.modal-open {
   }
 
   .pet-profile-card .modal-close {
-    position: sticky;
-    top: 12px;
-    float: right;
-    margin: 12px 12px -50px 0;
+    top: 14px;
+    right: 14px;
+  }
+
+  .pet-profile-image figcaption {
+    top: 14px;
+    left: 14px;
   }
 
   .pet-profile-details {
@@ -1208,19 +1254,6 @@ body.modal-open {
   text-align: center;
 }
 
-.featured-pets-heading h2 {
-  margin: 0 0 14px;
-  font: 700 clamp(2.1rem, 4vw, 3.7rem) / 1.05 var(--serif);
-  letter-spacing: -0.025em;
-}
-
-.featured-pets-heading > p:not(.eyebrow) {
-  max-width: 650px;
-  margin: 0 auto;
-  color: var(--charcoal);
-  font-size: 17px;
-}
-
 .more-pets-callout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 205px;
@@ -1290,6 +1323,10 @@ body.modal-open {
   height: 85px;
   overflow: visible;
   color: var(--cambridge-blue);
+}
+
+.journey-mobile {
+  display: none;
 }
 
 /* Pet search and resource additions */
@@ -1924,9 +1961,9 @@ body.modal-open {
   .success-journey {
     display: none;
   }
-  .help-pet-peek {
-    right: -4px;
-    bottom: -102px;
+  .closing-pet-peek {
+    right: 32px;
+    bottom: -20px;
     width: 120px;
     height: 137px;
   }
@@ -1971,7 +2008,7 @@ body.modal-open {
     grid-template-columns: 1fr 1fr;
   }
   .stats-pet-crop,
-  .help-pet-peek,
+  .closing-pet-peek,
   .success-journey,
   .event-card:first-child .event-pet-crop {
     display: none;
@@ -2255,6 +2292,10 @@ body.modal-open {
   color: var(--ivory);
 }
 
+.process-journey-mobile {
+  display: none;
+}
+
 .process-list h3 {
   margin: 0 0 5px;
   font: 700 1.55rem/1.12 var(--serif);
@@ -2521,6 +2562,20 @@ body.modal-open {
     left: 0;
     width: 70px;
   }
+  .process-journey-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    width: 70px;
+    height: 600px;
+    color: var(--ivory);
+    overflow: visible;
+  }
+  .process-journey {
+    display: none;
+  }
   .fit-card,
   .involve-events-card {
     padding: 28px 22px;
@@ -2695,6 +2750,24 @@ body.modal-open {
 }
 
 @media (min-width: 531px) and (max-width: 960px) {
+  .page-intro {
+    padding: 60px 0 44px;
+  }
+
+  .page-intro .lead {
+    max-width: 620px;
+  }
+
+  .featured-pets-heading {
+    margin-bottom: 24px;
+  }
+
+  .pet-search {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 20px;
+  }
+
   .feature-shell {
     padding-bottom: 150px;
   }
@@ -2798,6 +2871,7 @@ body.modal-open {
 
   .more-pets-callout {
     grid-template-columns: 1fr;
+    overflow: hidden;
   }
 
   .more-pets-visual {
@@ -2805,7 +2879,20 @@ body.modal-open {
   }
 
   .more-pets-journey {
-    left: 6px;
+    bottom: 16px;
+    right: 112px;
+    left: auto;
+    width: 145px;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .journey-desktop {
+    display: none;
+  }
+
+  .journey-mobile {
+    display: block;
   }
 
   .foster-pet-window {

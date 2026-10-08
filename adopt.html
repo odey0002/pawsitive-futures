@@ -37,22 +37,11 @@
       <section class="page-intro shell">
         <p class="eyebrow">Meet your match</p>
         <h1>Find a friend for <em>life.</em></h1>
-        <p class="lead desktop-copy">
-          Every one of our animals has a big personality and an even bigger heart. Start with the
-          kind of companion you’re looking for.
-        </p>
-        <p class="lead mobile-copy">Find the companion that feels right.</p>
+        <p class="lead">Browse adoptable pets and find a companion that fits your home and lifestyle.</p>
       </section>
       <section class="shell adopt-area">
         <div class="featured-pets-heading">
           <p class="eyebrow">Featured adoptable pets</p>
-          <h2 class="desktop-copy">Meet some of our friends.</h2>
-          <h2 class="mobile-copy">Some of our friends.</h2>
-          <p class="desktop-copy">
-            These profiles are a featured selection of animals currently looking for homes. Our
-            available pets change regularly, so there may be even more friends waiting to meet you.
-          </p>
-          <p class="mobile-copy">Pets currently looking for homes.</p>
         </div>
         <form aria-label="Search featured adoptable animals" class="pet-search" data-pet-search-form="" role="search">
           <label class="sr-only" for="pet-search">Search adoptable animals</label>
@@ -75,58 +64,58 @@
           <span data-result-label="">featured friends shown</span>
         </p>
         <div class="pet-grid">
-          <article class="pet-card" data-type="dog">
+          <article aria-haspopup="dialog" aria-label="View Sunny's adoption profile" class="pet-card" data-pet="Sunny" data-type="dog" role="button" tabindex="0">
             <img alt="Two dogs together" src="images/adopt-sunny-dog.jpg.png">
             <div>
               <span class="pet-type">Dog · 3 years</span>
               <h2>Sunny</h2>
               <p>Playful, affectionate, and always ready for an adventure.</p>
-              <button class="text-link pet-button" data-pet="Sunny">Meet Sunny <span>→</span></button>
+              <span class="text-link pet-button">Meet Sunny <span>→</span></span>
             </div>
           </article>
-          <article class="pet-card" data-type="cat">
+          <article aria-haspopup="dialog" aria-label="View Miso's adoption profile" class="pet-card" data-pet="Miso" data-type="cat" role="button" tabindex="0">
             <img alt="A cat ready for adoption" src="images/adopt-miso-cat.jpg.png">
             <div>
               <span class="pet-type">Cat · 2 years</span>
               <h2>Miso</h2>
               <p>A gentle observer with a fondness for sunny windows.</p>
-              <button class="text-link pet-button" data-pet="Miso">Meet Miso <span>→</span></button>
+              <span class="text-link pet-button">Meet Miso <span>→</span></span>
             </div>
           </article>
-          <article class="pet-card" data-type="rabbit">
+          <article aria-haspopup="dialog" aria-label="View Maple's adoption profile" class="pet-card" data-pet="Maple" data-type="rabbit" role="button" tabindex="0">
             <img alt="A rabbit ready for adoption" src="images/adopt-maple-rabbit.jpg.png">
             <div>
               <span class="pet-type">Rabbit · 8 months</span>
               <h2>Maple</h2>
               <p>Curious, soft-natured, and full of charming hops.</p>
-              <button class="text-link pet-button" data-pet="Maple">Meet Maple <span>→</span></button>
+              <span class="text-link pet-button">Meet Maple <span>→</span></span>
             </div>
           </article>
-          <article class="pet-card" data-type="dog">
+          <article aria-haspopup="dialog" aria-label="View Bowie's adoption profile" class="pet-card" data-pet="Bowie" data-type="dog" role="button" tabindex="0">
             <img alt="A small dog outdoors" src="images/adopt-bowie-dog.jpg.png">
             <div>
               <span class="pet-type">Dog · 6 months</span>
               <h2>Bowie</h2>
               <p>Easy-going and happiest close to his people.</p>
-              <button class="text-link pet-button" data-pet="Bowie">Meet Bowie <span>→</span></button>
+              <span class="text-link pet-button">Meet Bowie <span>→</span></span>
             </div>
           </article>
-          <article class="pet-card" data-type="cat">
+          <article aria-haspopup="dialog" aria-label="View Pepper's adoption profile" class="pet-card" data-pet="Pepper" data-type="cat" role="button" tabindex="0">
             <img alt="A cat resting" src="images/adopt-pepper-cat.jpg.jpg">
             <div>
               <span class="pet-type">Cat · 2 years</span>
               <h2>Pepper</h2>
               <p>A warm cuddle companion with a playful streak.</p>
-              <button class="text-link pet-button" data-pet="Pepper">Meet Pepper <span>→</span></button>
+              <span class="text-link pet-button">Meet Pepper <span>→</span></span>
             </div>
           </article>
-          <article class="pet-card" data-type="rabbit">
+          <article aria-haspopup="dialog" aria-label="View Clover's adoption profile" class="pet-card" data-pet="Clover" data-type="rabbit" role="button" tabindex="0">
             <img alt="A rabbit in grass" src="images/adopt-clover-rabbit.jpg.png">
             <div>
               <span class="pet-type">Rabbit · 12 months</span>
               <h2>Clover</h2>
               <p>Calm, sweet, and a fan of fresh greens.</p>
-              <button class="text-link pet-button" data-pet="Clover">Meet Clover <span>→</span></button>
+              <span class="text-link pet-button">Meet Clover <span>→</span></span>
             </div>
           </article>
         </div>
@@ -146,7 +135,7 @@
           </div>
           <div aria-hidden="true" class="more-pets-visual">
             <svg class="more-pets-journey" viewbox="0 0 170 90">
-              <g fill="currentColor">
+              <g class="journey-desktop" fill="currentColor">
                 <circle cx="-32" cy="86" r="2.6"></circle><circle cx="-18" cy="80" r="3.7"></circle>
                 <circle cx="-5" cy="76" r="2.3"></circle><circle cx="8" cy="72" r="2.4"></circle><circle cx="22" cy="67" r="3.8"></circle>
                 <circle cx="37" cy="58" r="2.6"></circle><circle cx="51" cy="48" r="4.2"></circle>
@@ -154,6 +143,13 @@
                 <circle cx="96" cy="52" r="4"></circle><circle cx="109" cy="58" r="2.8"></circle>
                 <circle cx="122" cy="53" r="3.6"></circle><circle cx="133" cy="42" r="2.5"></circle>
                 <circle cx="144" cy="29" r="4.1"></circle><circle cx="157" cy="23" r="3"></circle>
+              </g>
+              <g class="journey-mobile" fill="currentColor">
+                <circle cx="10" cy="57" r="2.4"></circle><circle cx="23" cy="50" r="3.8"></circle>
+                <circle cx="37" cy="42" r="2.5"></circle><circle cx="51" cy="36" r="4"></circle>
+                <circle cx="65" cy="38" r="2.8"></circle><circle cx="78" cy="45" r="3.5"></circle>
+                <circle cx="91" cy="42" r="2.4"></circle><circle cx="104" cy="32" r="4"></circle>
+                <circle cx="118" cy="23" r="2.7"></circle><circle cx="132" cy="18" r="3.5"></circle>
               </g>
             </svg>
             <div class="more-pets-window editorial-pet-crop">
@@ -328,9 +324,9 @@
     </main>
     <div aria-hidden="true" aria-labelledby="modal-title" aria-modal="true" class="modal pet-profile-modal" id="pet-modal" role="dialog">
       <div class="modal-card pet-profile-card">
-        <button aria-label="Close" class="modal-close">×</button>
         <div class="pet-profile-layout">
           <figure class="pet-profile-image">
+            <button aria-label="Close" class="modal-close">×</button>
             <img alt="" data-profile-image="">
             <figcaption data-profile-type=""></figcaption>
           </figure>

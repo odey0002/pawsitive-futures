@@ -197,37 +197,45 @@ const closeModal = () => {
   lastFocusedPetButton?.focus();
 };
 
-document.querySelectorAll("[data-pet]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const petName = button.dataset.pet;
-    const profile = petProfiles[petName];
-    const card = button.closest(".pet-card");
-    const image = card?.querySelector("img");
+const openPetProfile = (card) => {
+  const petName = card.dataset.pet;
+  const profile = petProfiles[petName];
+  const image = card?.querySelector("img");
 
-    if (!profile || !modal) return;
+  if (!profile || !modal) return;
 
-    lastFocusedPetButton = button;
-    modal.querySelector("[data-pet-name]").textContent = petName;
-    modal.querySelector("[data-profile-glance]").textContent = profile.glance;
-    modal.querySelector("[data-profile-image]").src = image?.src || "";
-    modal.querySelector("[data-profile-image]").alt = image?.alt || `${petName} ready for adoption`;
-    modal.querySelector("[data-profile-type]").textContent = card?.querySelector(".pet-type")?.textContent || "";
-    modal.querySelector("[data-profile-personality]").textContent = profile.personality;
-    modal.querySelector("[data-profile-energy]").textContent = profile.energy;
-    modal.querySelector("[data-profile-good-with]").textContent = profile.goodWith;
-    modal.querySelector("[data-profile-care]").textContent = profile.care;
-    modal.querySelector("[data-profile-health]").textContent = profile.health;
-    modal.querySelector("[data-profile-home]").textContent = profile.home;
-    modal.querySelector("[data-profile-status]").textContent = profile.status;
+  lastFocusedPetButton = card;
+  modal.querySelector("[data-pet-name]").textContent = petName;
+  modal.querySelector("[data-profile-glance]").textContent = profile.glance;
+  modal.querySelector("[data-profile-image]").src = image?.src || "";
+  modal.querySelector("[data-profile-image]").alt = image?.alt || `${petName} ready for adoption`;
+  modal.querySelector("[data-profile-type]").textContent = card?.querySelector(".pet-type")?.textContent || "";
+  modal.querySelector("[data-profile-personality]").textContent = profile.personality;
+  modal.querySelector("[data-profile-energy]").textContent = profile.energy;
+  modal.querySelector("[data-profile-good-with]").textContent = profile.goodWith;
+  modal.querySelector("[data-profile-care]").textContent = profile.care;
+  modal.querySelector("[data-profile-health]").textContent = profile.health;
+  modal.querySelector("[data-profile-home]").textContent = profile.home;
+  modal.querySelector("[data-profile-status]").textContent = profile.status;
 
-    const contactLink = modal.querySelector("[data-profile-contact]");
-    contactLink.href = `contact.html?topic=Adoption&pet=${encodeURIComponent(petName)}#contact-form`;
-    contactLink.innerHTML = `I’m interested in ${petName} <span>→</span>`;
+  const contactLink = modal.querySelector("[data-profile-contact]");
+  contactLink.href = `contact.html?topic=Adoption&pet=${encodeURIComponent(petName)}#contact-form`;
+  contactLink.innerHTML = `I’m interested in ${petName} <span>→</span>`;
 
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-    modal.querySelector(".modal-close")?.focus();
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  modal.querySelector(".modal-close")?.focus();
+};
+
+document.querySelectorAll(".pet-card[data-pet]").forEach((card) => {
+  card.addEventListener("click", () => openPetProfile(card));
+
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openPetProfile(card);
+    }
   });
 });
 
