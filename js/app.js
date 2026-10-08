@@ -119,8 +119,72 @@ if (petSearch) {
   updatePets();
 }
 
-// Pet interest modal
+// Detailed pet profiles
 const modal = document.querySelector("#pet-modal");
+let lastFocusedPetButton;
+
+const petProfiles = {
+  Sunny: {
+    glance: "Dog · 3 years · Small · Maltese–Poodle mix · Female",
+    personality: "Playful, affectionate, and happiest when there is a person nearby to share the day with.",
+    energy: "High",
+    goodWith: "Children · Dogs",
+    care: "Daily walks, play, and time to practise good manners.",
+    health: "Routine wellness care is up to date.",
+    home: "An active home ready for companionship and outdoor time.",
+    status: "Available for adoption",
+  },
+  Miso: {
+    glance: "Cat · 2 years · Medium · Domestic shorthair · Female",
+    personality: "A gentle observer who takes a little time to settle, then seeks out sunny windows and quiet company.",
+    energy: "Low to moderate",
+    goodWith: "Calm adults and patient older children",
+    care: "A predictable routine, cosy resting spots, and gentle play.",
+    health: "Routine wellness care is up to date.",
+    home: "A calm, patient home where she can settle in at her own pace.",
+    status: "Available for adoption",
+  },
+  Maple: {
+    glance: "Rabbit · 8 months · Small · English Spot mix · Female",
+    personality: "Curious, soft-natured, and full of charming hops once she feels comfortable in her space.",
+    energy: "Moderate",
+    goodWith: "Patient adults and respectful older children",
+    care: "Room to hop, daily enrichment, and fresh greens as part of her routine.",
+    health: "Routine wellness care is up to date.",
+    home: "A quiet home with a safe, roomy rabbit setup.",
+    status: "Available for adoption",
+  },
+  Bowie: {
+    glance: "Dog · 6 months · Small · Pomeranian–Spitz mix · Male",
+    personality: "Easy-going and people-focused, Bowie is happiest close to his favourite humans.",
+    energy: "Moderate",
+    goodWith: "Children and adults who enjoy a steady companion",
+    care: "Short daily walks, gentle play, and plenty of together time.",
+    health: "Routine wellness care is up to date.",
+    home: "A caring home looking for a friendly young dog to grow with.",
+    status: "Available for adoption",
+  },
+  Pepper: {
+    glance: "Cat · 2 years · Medium · Domestic shorthair tabby · Male",
+    personality: "A warm cuddle companion with a playful streak and a talent for making a home feel lived in.",
+    energy: "Moderate",
+    goodWith: "Adults and calm households",
+    care: "Interactive play, cosy resting spots, and a regular routine.",
+    health: "Routine wellness care is up to date.",
+    home: "A loving home with time for affection and play.",
+    status: "Available for adoption",
+  },
+  Clover: {
+    glance: "Rabbit · 12 months · Small · Netherland Dwarf mix · Female",
+    personality: "Calm, sweet, and happiest when exploring at a gentle pace with fresh greens nearby.",
+    energy: "Low to moderate",
+    goodWith: "Patient adults and respectful older children",
+    care: "A safe rabbit enclosure, daily enrichment, and fresh greens.",
+    health: "Routine wellness care is up to date.",
+    home: "A peaceful home with room for a well-planned rabbit habitat.",
+    status: "Available for adoption",
+  },
+};
 
 const closeModal = () => {
   if (!modal) {
@@ -129,21 +193,41 @@ const closeModal = () => {
 
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  lastFocusedPetButton?.focus();
 };
 
 document.querySelectorAll("[data-pet]").forEach((button) => {
   button.addEventListener("click", () => {
-    const petName = document.querySelector("[data-pet-name]");
+    const petName = button.dataset.pet;
+    const profile = petProfiles[petName];
+    const card = button.closest(".pet-card");
+    const image = card?.querySelector("img");
 
-    if (petName) {
-      petName.textContent = button.dataset.pet;
-    }
+    if (!profile || !modal) return;
 
-    if (modal) {
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      modal.querySelector(".modal-close")?.focus();
-    }
+    lastFocusedPetButton = button;
+    modal.querySelector("[data-pet-name]").textContent = petName;
+    modal.querySelector("[data-profile-glance]").textContent = profile.glance;
+    modal.querySelector("[data-profile-image]").src = image?.src || "";
+    modal.querySelector("[data-profile-image]").alt = image?.alt || `${petName} ready for adoption`;
+    modal.querySelector("[data-profile-type]").textContent = card?.querySelector(".pet-type")?.textContent || "";
+    modal.querySelector("[data-profile-personality]").textContent = profile.personality;
+    modal.querySelector("[data-profile-energy]").textContent = profile.energy;
+    modal.querySelector("[data-profile-good-with]").textContent = profile.goodWith;
+    modal.querySelector("[data-profile-care]").textContent = profile.care;
+    modal.querySelector("[data-profile-health]").textContent = profile.health;
+    modal.querySelector("[data-profile-home]").textContent = profile.home;
+    modal.querySelector("[data-profile-status]").textContent = profile.status;
+
+    const contactLink = modal.querySelector("[data-profile-contact]");
+    contactLink.href = `contact.html?topic=Adoption&pet=${encodeURIComponent(petName)}#contact-form`;
+    contactLink.innerHTML = `I’m interested in ${petName} <span>→</span>`;
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    modal.querySelector(".modal-close")?.focus();
   });
 });
 
@@ -159,12 +243,39 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
   }
+
+  if (event.key === "Tab" && modal?.classList.contains("is-open")) {
+    const focusable = [...modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])")];
+    const first = focusable[0];
+    const last = focusable.at(-1);
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 });
 
 // Contact form feedback
-document
-  .querySelector("[data-contact-form]")
-  ?.addEventListener("submit", (event) => {
+const contactForm = document.querySelector("[data-contact-form]");
+
+if (contactForm) {
+  const enquiry = new URLSearchParams(window.location.search);
+  const topic = enquiry.get("topic");
+  const pet = enquiry.get("pet");
+
+  if (topic && [...contactForm.elements.topic.options].some((option) => option.value === topic)) {
+    contactForm.elements.topic.value = topic;
+  }
+
+  if (pet) {
+    contactForm.elements.message.value = `I’m interested in learning more about ${pet}.`;
+  }
+
+  contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -174,6 +285,7 @@ document
     status.textContent = `Thanks, ${name}! Your message is ready for our team.`;
     form.reset();
   });
+}
 
 // Get Involved form feedback
 document
@@ -190,3 +302,21 @@ document
       `Thanks, ${name}! Your ${path} interest is ready for our team.`;
     form.reset();
   });
+
+// Guide the volunteer CTA to the existing form with the relevant path selected.
+document.querySelectorAll("[data-volunteer-cta]").forEach((cta) => {
+  cta.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const form = document.querySelector("[data-involvement-form]");
+    const pathField = form?.elements.path;
+    const formSection = document.querySelector("#interest-form");
+
+    if (pathField) {
+      pathField.value = "Volunteering";
+    }
+
+    formSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", "#interest-form");
+  });
+});

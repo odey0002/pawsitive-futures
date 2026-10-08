@@ -834,6 +834,198 @@ textarea {
   cursor: pointer;
 }
 
+.pet-profile-modal {
+  overflow-y: auto;
+}
+
+.pet-profile-card {
+  width: min(1040px, 100%);
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  padding: 0;
+}
+
+.pet-profile-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+}
+
+.pet-profile-image {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 15px 0 0 15px;
+  background: var(--cambridge-blue);
+}
+
+.pet-profile-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 580px;
+  object-fit: cover;
+}
+
+.pet-profile-image figcaption {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  padding: 8px 11px;
+  border-radius: 99px;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pet-profile-content {
+  padding: 54px 52px 46px;
+}
+
+.pet-profile-card h2 {
+  margin: 0 0 22px;
+  font: 700 clamp(2.5rem, 5vw, 4rem) / 0.95 var(--serif);
+}
+
+.pet-at-glance {
+  margin: -8px 0 26px;
+  color: var(--cambridge-blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.pet-profile-summary {
+  margin-bottom: 25px;
+}
+
+.pet-profile-summary h3 {
+  margin: 0 0 7px;
+  color: var(--cambridge-blue);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pet-profile-summary p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.pet-profile-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0 0 30px;
+}
+
+.pet-profile-details div {
+  padding-top: 12px;
+  border-top: 1px solid var(--warm-taupe);
+}
+
+.pet-profile-details dt {
+  margin-bottom: 5px;
+  color: var(--cambridge-blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pet-profile-details dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.pet-profile-details .profile-status-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 5px 8px;
+  border: 1px solid var(--charcoal);
+  border-radius: 99px;
+  background: var(--gold);
+  color: var(--charcoal);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pet-profile-card .modal-close {
+  z-index: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ivory);
+  line-height: 1;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .pet-profile-card {
+    max-width: 700px;
+  }
+
+  .pet-profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-profile-image {
+    min-height: 300px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .pet-profile-image img {
+    min-height: 300px;
+    max-height: 380px;
+  }
+
+  .pet-profile-content {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 530px) {
+  .pet-profile-modal {
+    padding: 12px;
+  }
+
+  .pet-profile-card {
+    max-height: calc(100vh - 24px);
+  }
+
+  .pet-profile-image,
+  .pet-profile-image img {
+    min-height: 225px;
+  }
+
+  .pet-profile-content {
+    padding: 34px 22px 26px;
+  }
+
+  .pet-profile-card .modal-close {
+    position: sticky;
+    top: 12px;
+    float: right;
+    margin: 12px 12px -50px 0;
+  }
+
+  .pet-profile-details {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 @media (max-width: 800px) {
   .nav-wrap {
     flex-wrap: wrap;
@@ -981,7 +1173,7 @@ textarea {
   .page-intro {
     padding: 55px 0 40px;
   }
-  .modal-card {
+  .modal-card:not(.pet-profile-card) {
     padding: 35px 25px;
   }
 }
@@ -1900,7 +2092,9 @@ textarea {
 }
 
 .role-card {
+  display: flex;
   min-height: 270px;
+  flex-direction: column;
   padding: 30px;
   border: 2px solid var(--warm-taupe);
   border-radius: 18px;
@@ -1918,6 +2112,35 @@ textarea {
 
 .role-card p,
 .donation-impact-grid p {
+  margin: 0;
+}
+
+.role-details {
+  display: grid;
+  gap: 14px;
+  grid-auto-rows: 50px;
+  margin: 30px 0 0;
+  color: var(--charcoal);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.role-details div {
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.role-details dt {
+  color: var(--cambridge-blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.role-details dd {
   margin: 0;
 }
 
@@ -1958,6 +2181,10 @@ textarea {
 .process-list p {
   max-width: 700px;
   margin: 0;
+}
+
+.process-actions {
+  margin-top: 42px;
 }
 
 .volunteer-fit {
@@ -2456,6 +2683,16 @@ textarea {
 }
 
 @media (max-width: 530px) {
+  .role-details {
+    grid-auto-rows: auto;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .role-details div {
+    grid-template-columns: 105px 1fr;
+  }
+
   .volunteer-process {
     padding-bottom: 48px;
   }

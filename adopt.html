@@ -310,17 +310,33 @@
         <a class="button" href="contact.html">Talk to our team <span>→</span></a>
       </section>
     </main>
-    <div aria-hidden="true" aria-labelledby="modal-title" aria-modal="true" class="modal" id="pet-modal" role="dialog">
-      <div class="modal-card">
+    <div aria-hidden="true" aria-labelledby="modal-title" aria-modal="true" class="modal pet-profile-modal" id="pet-modal" role="dialog">
+      <div class="modal-card pet-profile-card">
         <button aria-label="Close" class="modal-close">×</button>
-        <p class="eyebrow">Adoption interest</p>
-        <h2 id="modal-title">Meet a new friend</h2>
-        <p>
-          Thanks for your interest in
-          <strong data-pet-name="">this pet</strong>
-          . Send us a note and our adoption team will get in touch.
-        </p>
-        <a class="button" href="contact.html">Contact the team <span>→</span></a>
+        <div class="pet-profile-layout">
+          <figure class="pet-profile-image">
+            <img alt="" data-profile-image="">
+            <figcaption data-profile-type=""></figcaption>
+          </figure>
+          <div class="pet-profile-content">
+            <p class="eyebrow">Adoption profile</p>
+            <h2 id="modal-title" data-pet-name="">Meet a new friend</h2>
+            <p class="pet-at-glance" data-profile-glance=""></p>
+            <section aria-labelledby="personality-heading" class="pet-profile-summary">
+              <h3 id="personality-heading">Personality</h3>
+              <p data-profile-personality=""></p>
+            </section>
+            <dl class="pet-profile-details">
+              <div><dt>Energy level</dt><dd data-profile-energy=""></dd></div>
+              <div><dt>Good with</dt><dd data-profile-good-with=""></dd></div>
+              <div><dt>Care needs</dt><dd data-profile-care=""></dd></div>
+              <div><dt>Health</dt><dd data-profile-health=""></dd></div>
+              <div><dt>Ideal home</dt><dd data-profile-home=""></dd></div>
+              <div><dt>Adoption status</dt><dd class="profile-status-pill" data-profile-status=""></dd></div>
+            </dl>
+            <a class="button" data-profile-contact="" href="contact.html#contact-form">I’m interested <span>→</span></a>
+          </div>
+        </div>
       </div>
     </div>
     <footer class="site-footer">
