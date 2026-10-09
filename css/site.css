@@ -1698,6 +1698,14 @@ body.modal-open {
   pointer-events: none;
 }
 
+.success-journey-compact {
+  display: none;
+}
+
+.success-journey-mobile-tail {
+  display: none;
+}
+
 .success-copy {
   position: relative;
   z-index: 2;
@@ -1961,6 +1969,24 @@ body.modal-open {
   .success-journey {
     display: none;
   }
+  .success-journey-compact {
+    display: none;
+  }
+  .success-copy {
+    padding-right: 32px;
+  }
+  .success-journey-mobile-tail {
+    display: block;
+    position: absolute;
+    top: -65px;
+    right: 2px;
+    z-index: 1;
+    width: 28px;
+    height: 120px;
+    color: var(--cambridge-blue);
+    overflow: visible;
+    pointer-events: none;
+  }
   .closing-pet-peek {
     right: 32px;
     bottom: -20px;
@@ -1975,13 +2001,18 @@ body.modal-open {
   .more-pets-callout .button {
     width: fit-content;
   }
+  .more-pets-journey {
+    right: 152px;
+    bottom: 16px;
+    left: auto;
+  }
   .success-stories {
     padding: 80px 0;
   }
   .success-stories-grid,
   .resource-events-head {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 66px;
   }
   .success-photo,
   .success-photo img {
@@ -2008,10 +2039,22 @@ body.modal-open {
     grid-template-columns: 1fr 1fr;
   }
   .stats-pet-crop,
-  .closing-pet-peek,
   .success-journey,
   .event-card:first-child .event-pet-crop {
     display: none;
+  }
+  .closing-pet-peek {
+    display: block;
+    right: 16px;
+    bottom: -12px;
+    width: 92px;
+    height: 105px;
+  }
+  .success-copy {
+    padding-right: 28px;
+  }
+  .success-journey-mobile-tail {
+    top: -65px;
   }
   .event-card:first-child {
     grid-template-columns: 62px minmax(0, 1fr);
@@ -2799,6 +2842,10 @@ body.modal-open {
 }
 
 @media (min-width: 531px) and (max-width: 900px) {
+  .image-badge {
+    left: 18px;
+  }
+
   .contact-grid,
   .involve-hero,
   .foster-grid,
@@ -2833,6 +2880,10 @@ body.modal-open {
   .success-stories-grid,
   .resource-events-head {
     gap: 40px;
+  }
+
+  .success-stories-grid {
+    gap: 66px;
   }
 
   .involve-events-card {
